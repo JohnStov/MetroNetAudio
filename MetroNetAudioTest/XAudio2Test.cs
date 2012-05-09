@@ -15,11 +15,26 @@
         }
 
         [TestMethod]
-        public void CanCreateObjectWithProcessorOption()
+        public void CanCreateObjectWithProcessorAffinity()
         {
             XAudio2 obj = XAudio2.Create(XAudio2Processor.Processor2);
 
             Assert.IsNotNull(obj);
+        }
+
+        [TestMethod]
+        public void CanStartEngine()
+        {
+            XAudio2 obj = XAudio2.Create();
+            obj.StartEngine();
+        }
+
+        [TestMethod]
+        public void CanStopEngine()
+        {
+            XAudio2 obj = XAudio2.Create();
+            obj.StartEngine();
+            obj.StopEngine();
         }
     }
 }

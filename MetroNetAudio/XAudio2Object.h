@@ -15,7 +15,10 @@ namespace MetroNetAudio
 		static XAudio2^ Create();
 		static XAudio2^ Create(XAudio2Processor processor);
 
+		void StartEngine();
+		void StopEngine();
+
 	private:
-		const IXAudio2* m_pXAudio;
+		const IXAudio2* m_pXAudio2;
     };
 }
