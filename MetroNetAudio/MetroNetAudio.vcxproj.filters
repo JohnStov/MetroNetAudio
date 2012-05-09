@@ -10,6 +10,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="XAudio2Object.h" />
     <ClInclude Include="DXHelper.h" />
+    <ClInclude Include="XAudio2Processor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

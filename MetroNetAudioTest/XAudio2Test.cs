@@ -13,5 +13,13 @@
 
             Assert.IsNotNull(obj);
         }
+
+        [TestMethod]
+        public void CanCreateObjectWithProcessorOption()
+        {
+            XAudio2 obj = XAudio2.Create(XAudio2Processor.Processor2);
+
+            Assert.IsNotNull(obj);
+        }
     }
 }
