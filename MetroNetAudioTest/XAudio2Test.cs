@@ -36,5 +36,21 @@
             obj.StartEngine();
             obj.StopEngine();
         }
+
+        [TestMethod]
+        public void CanRegisterForCallbacks()
+        {
+            XAudio2 obj = XAudio2.Create();
+            obj.RegisterForCallbacks(new XAudio2EngineCallback());
+        }
+
+        [TestMethod]
+        public void CanUnregisterForCallbacks()
+        {
+            XAudio2 obj = XAudio2.Create();
+            var callback = new XAudio2EngineCallback();
+            obj.RegisterForCallbacks(callback);
+            obj.UnregisterForCallbacks(callback);
+        }
     }
 }

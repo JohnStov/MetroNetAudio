@@ -11,9 +11,11 @@
     <ClInclude Include="XAudio2Object.h" />
     <ClInclude Include="DXHelper.h" />
     <ClInclude Include="XAudio2Processor.h" />
+    <ClInclude Include="XAudio2EngineCallback.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="XAudio2Object.cpp" />
+    <ClCompile Include="XAudio2EngineCallback.cpp" />
   </ItemGroup>
 </Project>
