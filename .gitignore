@@ -3,6 +3,7 @@ bin
 obj
 Debug
 ipch
+_Resharper*
 
 # mstest test results
 TestResults

@@ -9,10 +9,14 @@ using namespace Platform;
 XAudio2::XAudio2(IXAudio2* pXAudio2)
 	: m_pXAudio2(pXAudio2)
 {
+	m_pCallback = new XAudio2EngineCallbackShim(this);
+	DX::ThrowIfFailed(m_pXAudio2->RegisterForCallbacks(m_pCallback));
 }
 
 XAudio2::~XAudio2()
 {
+	m_pXAudio2->UnregisterForCallbacks(m_pCallback);
+	delete m_pCallback;
 	delete m_pXAudio2;
 }
 
@@ -40,13 +44,17 @@ void XAudio2::StopEngine()
 	m_pXAudio2->StopEngine();
 }
 
-void XAudio2::RegisterForCallbacks(XAudio2EngineCallback^ callback)
+void XAudio2::FireProcessingPassStart()
 {
-	DX::ThrowIfFailed(m_pXAudio2->RegisterForCallbacks(callback->m_pCallback));
+	ProcessingPassStart();
 }
 
-void XAudio2::UnregisterForCallbacks(XAudio2EngineCallback^ callback)
+void XAudio2::FireProcessingPassEnd()
 {
-	m_pXAudio2->UnregisterForCallbacks(callback->m_pCallback);
+	ProcessingPassEnd();
 }
 
+void XAudio2::FireCriticalEvent(HRESULT Error)
+{
+	CriticalEvent(Error);
+}
