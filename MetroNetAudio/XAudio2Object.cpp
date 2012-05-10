@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "XAudio2Object.h"
 #include "XAudio2EngineCallback.h"
+#include "XAudio2MasteringVoice.h"
 #include "DXHelper.h"
 
 using namespace MetroNetAudio;
@@ -58,3 +59,37 @@ void XAudio2::FireCriticalEvent(HRESULT Error)
 {
 	CriticalEvent(Error);
 }
+
+XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice()
+{
+	IXAudio2MasteringVoice* pVoice;
+	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice));
+	
+	return ref new XAudio2MasteringVoice(pVoice);
+}
+
+XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels)
+{
+	IXAudio2MasteringVoice* pVoice;
+	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice, (UINT)inputChannels));
+	
+	return ref new XAudio2MasteringVoice(pVoice);
+}
+
+XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate)
+{
+	IXAudio2MasteringVoice* pVoice;
+	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice, (UINT)inputChannels, (UINT)inputSampleRate));
+	
+	return ref new XAudio2MasteringVoice(pVoice);
+}
+
+XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId)
+{
+	IXAudio2MasteringVoice* pVoice;
+
+	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice, (UINT)inputChannels, (UINT)inputSampleRate, 0, deviceId->Begin()));
+	
+	return ref new XAudio2MasteringVoice(pVoice);
+}
+

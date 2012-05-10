@@ -4,11 +4,15 @@
 
 #include "XAudio2Processor.h"
 
+using namespace Platform;
+
 namespace MetroNetAudio
 {
 	public delegate void ProcessingPassStartHandler();
 	public delegate void ProcessingPassEndHandler();
 	public delegate void CriticalEventHandler(HRESULT hresult);
+
+	ref class XAudio2MasteringVoice;
 
 	public ref class XAudio2 sealed
     {
@@ -27,6 +31,12 @@ namespace MetroNetAudio
 
 		void StartEngine();
 		void StopEngine();
+
+		XAudio2MasteringVoice^ CreateMasteringVoice();
+		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels);
+		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate);
+		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId);
+
 	private:
 		IXAudio2* m_pXAudio2;
 		IXAudio2EngineCallback* m_pCallback;
