@@ -17,6 +17,12 @@ namespace MetroNetAudio
 
 		XAudio2VoiceDetails^ GetVoiceDetails();
 
+		property float Volume
+		{
+			float get();
+			void set(float value);
+		}
+
 	private:
 		IXAudio2MasteringVoice* m_pVoice;
 
