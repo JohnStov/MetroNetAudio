@@ -13,11 +13,13 @@
     <ClInclude Include="XAudio2Processor.h" />
     <ClInclude Include="XAudio2EngineCallback.h" />
     <ClInclude Include="XAudio2MasteringVoice.h" />
+    <ClInclude Include="XAudio2VoiceDetails.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="XAudio2Object.cpp" />
     <ClCompile Include="XAudio2EngineCallback.cpp" />
     <ClCompile Include="XAudio2MasteringVoice.cpp" />
+    <ClCompile Include="XAudio2VoiceDetails.cpp" />
   </ItemGroup>
 </Project>
