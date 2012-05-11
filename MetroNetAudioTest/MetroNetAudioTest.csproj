@@ -118,6 +118,7 @@
     <Compile Include="XAudio2MasteringVoiceTest.cs" />
     <Compile Include="XAudio2Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XAudio2VoiceDetailsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
