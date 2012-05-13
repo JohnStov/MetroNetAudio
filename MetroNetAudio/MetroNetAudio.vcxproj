@@ -196,10 +196,13 @@
   <ItemGroup>
     <ClInclude Include="DXHelper.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SourceVoiceFlags.h" />
+    <ClInclude Include="WaveFormat.h" />
     <ClInclude Include="XAudio2EngineCallback.h" />
     <ClInclude Include="XAudio2MasteringVoice.h" />
     <ClInclude Include="XAudio2Object.h" />
     <ClInclude Include="XAudio2Processor.h" />
+    <ClInclude Include="XAudio2SourceVoice.h" />
     <ClInclude Include="XAudio2VoiceDetails.h" />
   </ItemGroup>
   <ItemGroup>
@@ -211,9 +214,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WaveFormat.cpp" />
     <ClCompile Include="XAudio2EngineCallback.cpp" />
     <ClCompile Include="XAudio2MasteringVoice.cpp" />
     <ClCompile Include="XAudio2Object.cpp" />
+    <ClCompile Include="XAudio2SourceVoice.cpp" />
     <ClCompile Include="XAudio2VoiceDetails.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

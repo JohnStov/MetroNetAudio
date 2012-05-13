@@ -2,7 +2,9 @@
 #include "XAudio2Object.h"
 #include "XAudio2EngineCallback.h"
 #include "XAudio2MasteringVoice.h"
+#include "XAudio2SourceVoice.h"
 #include "DXHelper.h"
+#include "WaveFormat.h"
 
 using namespace MetroNetAudio;
 using namespace Platform;
@@ -91,5 +93,14 @@ XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint3
 	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice, (UINT)inputChannels, (UINT)inputSampleRate, 0, deviceId->Begin()));
 	
 	return ref new XAudio2MasteringVoice(pVoice);
+}
+
+XAudio2SourceVoice^ XAudio2::CreateSourceVoice(WaveFormat^ format, SourceVoiceFlags flags)
+{
+	IXAudio2SourceVoice* pVoice;
+
+	DX::ThrowIfFailed(m_pXAudio2->CreateSourceVoice(&pVoice, &(format->m_format), (UINT)flags));
+	
+	return ref new XAudio2SourceVoice(pVoice);
 }
 

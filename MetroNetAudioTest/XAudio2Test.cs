@@ -97,5 +97,13 @@
             var id = "Not A Valid Device Id";
             var voice = obj.CreateMasteringVoice(2, 48000, id);
         }
+
+        [TestMethod]
+        public void CanCreateSourceVoice()
+        {
+            XAudio2 obj = XAudio2.Create();
+            var voice = obj.CreateSourceVoice(new WaveFormat(), SourceVoiceFlags.None);
+            Assert.IsNotNull(voice);
+        }
     }
 }

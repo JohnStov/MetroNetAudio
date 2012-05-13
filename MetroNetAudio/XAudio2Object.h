@@ -3,6 +3,7 @@
 #include "xaudio2.h"
 
 #include "XAudio2Processor.h"
+#include "SourceVoiceFlags.h"
 
 using namespace Platform;
 
@@ -13,6 +14,8 @@ namespace MetroNetAudio
 	public delegate void CriticalEventHandler(HRESULT hresult);
 
 	ref class XAudio2MasteringVoice;
+	ref class XAudio2SourceVoice;
+	ref class WaveFormat;
 
 	public ref class XAudio2 sealed
     {
@@ -36,6 +39,8 @@ namespace MetroNetAudio
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels);
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate);
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId);
+
+		XAudio2SourceVoice^ CreateSourceVoice(WaveFormat^ format, SourceVoiceFlags flags);
 
 	private:
 		IXAudio2* m_pXAudio2;
