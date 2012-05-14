@@ -13,7 +13,6 @@ XAudio2MasteringVoice::XAudio2MasteringVoice(IXAudio2MasteringVoice* pVoice)
 
 XAudio2MasteringVoice::~XAudio2MasteringVoice()
 {
-	delete m_pVoice;
 }
 
 XAudio2VoiceDetails^ XAudio2MasteringVoice::GetVoiceDetails()

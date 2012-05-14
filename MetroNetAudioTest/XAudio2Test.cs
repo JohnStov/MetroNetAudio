@@ -102,7 +102,17 @@
         public void CanCreateSourceVoice()
         {
             XAudio2 obj = XAudio2.Create();
-            var voice = obj.CreateSourceVoice(new WaveFormat(), SourceVoiceFlags.None);
+            var master = obj.CreateMasteringVoice();
+            var voice = obj.CreateSourceVoice();
+            Assert.IsNotNull(voice);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(System.Exception))]
+        public void CannotCreateSourceVoiceWithoutMasteringVoice()
+        {
+            XAudio2 obj = XAudio2.Create();
+            var voice = obj.CreateSourceVoice();
             Assert.IsNotNull(voice);
         }
     }

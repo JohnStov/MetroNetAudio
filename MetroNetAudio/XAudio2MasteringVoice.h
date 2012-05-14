@@ -1,6 +1,10 @@
 #pragma once
 
-#include "xaudio2.h"
+#include <memory>
+#include <xaudio2.h>
+#include <../winrt/wrl/client.h>
+
+using namespace Microsoft::WRL;
 
 namespace MetroNetAudio
 {
@@ -24,7 +28,7 @@ namespace MetroNetAudio
 		}
 
 	private:
-		IXAudio2MasteringVoice* m_pVoice;
+		std::unique_ptr<IXAudio2MasteringVoice> m_pVoice;
 
 	friend ref class XAudio2;
 	};

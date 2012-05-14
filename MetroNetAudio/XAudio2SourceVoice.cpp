@@ -10,5 +10,4 @@ XAudio2SourceVoice::XAudio2SourceVoice(IXAudio2SourceVoice* pVoice)
 
 XAudio2SourceVoice::~XAudio2SourceVoice(void)
 {
-	delete m_pVoice;
 }

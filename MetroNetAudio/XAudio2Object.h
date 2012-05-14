@@ -1,11 +1,13 @@
 ﻿#pragma once
 
-#include "xaudio2.h"
+#include <xaudio2.h>
+#include <../winrt/wrl/client.h>
 
 #include "XAudio2Processor.h"
 #include "SourceVoiceFlags.h"
 
 using namespace Platform;
+using namespace Microsoft::WRL;
 
 namespace MetroNetAudio
 {
@@ -20,7 +22,7 @@ namespace MetroNetAudio
 	public ref class XAudio2 sealed
     {
     private:
-        XAudio2(IXAudio2* pXAudio2);
+		XAudio2(IXAudio2* pXAudio2);
 		
 	public:
 		~XAudio2();
@@ -40,10 +42,10 @@ namespace MetroNetAudio
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate);
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId);
 
-		XAudio2SourceVoice^ CreateSourceVoice(WaveFormat^ format, SourceVoiceFlags flags);
+		XAudio2SourceVoice^ CreateSourceVoice();
 
 	private:
-		IXAudio2* m_pXAudio2;
+		ComPtr<IXAudio2> m_pXAudio2;
 		IXAudio2EngineCallback* m_pCallback;
 
 		void FireProcessingPassStart();

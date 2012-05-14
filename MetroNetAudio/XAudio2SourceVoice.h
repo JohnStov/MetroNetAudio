@@ -1,6 +1,7 @@
 #pragma once
 
-#include "xaudio2.h"
+#include <memory>
+#include <xaudio2.h>
 
 namespace MetroNetAudio
 {
@@ -12,7 +13,7 @@ namespace MetroNetAudio
 		~XAudio2SourceVoice(void);
 
 	private:
-		IXAudio2SourceVoice* m_pVoice;
+		std::unique_ptr<IXAudio2SourceVoice> m_pVoice;
 
 	friend ref class XAudio2;
 	};

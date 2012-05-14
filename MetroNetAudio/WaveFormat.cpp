@@ -9,6 +9,7 @@ WaveFormat::WaveFormat(void)
 	m_format.nChannels = 2;
 	m_format.nSamplesPerSec = 48000;
 	m_format.wBitsPerSample = 32;
+	m_format.cbSize = 0;
 
 	RecalculateProperties();
 }
@@ -19,8 +20,8 @@ WaveFormat::~WaveFormat(void)
 
 void WaveFormat::RecalculateProperties()
 {
-	m_format.nBlockAlign = m_format.nChannels * m_format.wBitsPerSample;
-	m_format.nAvgBytesPerSec = m_format.nBlockAlign / 8 * m_format.nSamplesPerSec;
+	m_format.nBlockAlign = m_format.nChannels * m_format.wBitsPerSample / 8;
+	m_format.nAvgBytesPerSec = m_format.nBlockAlign * m_format.nSamplesPerSec;
 }
 
 uint16 WaveFormat::FormatTag::get()

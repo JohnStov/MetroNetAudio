@@ -20,7 +20,6 @@ XAudio2::~XAudio2()
 {
 	m_pXAudio2->UnregisterForCallbacks(m_pCallback);
 	delete m_pCallback;
-	delete m_pXAudio2;
 }
 
 XAudio2^ XAudio2::Create()
@@ -95,11 +94,13 @@ XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint3
 	return ref new XAudio2MasteringVoice(pVoice);
 }
 
-XAudio2SourceVoice^ XAudio2::CreateSourceVoice(WaveFormat^ format, SourceVoiceFlags flags)
+XAudio2SourceVoice^ XAudio2::CreateSourceVoice()
 {
 	IXAudio2SourceVoice* pVoice;
 
-	DX::ThrowIfFailed(m_pXAudio2->CreateSourceVoice(&pVoice, &(format->m_format), (UINT)flags));
+	auto fmt = ref new WaveFormat();
+
+	DX::ThrowIfFailed(m_pXAudio2->CreateSourceVoice(&pVoice, &(fmt->m_format), (UINT)SourceVoiceFlags::None));
 	
 	return ref new XAudio2SourceVoice(pVoice);
 }
