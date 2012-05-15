@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>1.0.0</version>
+    <authors>John Stovin</authors>
+    <owners>John Stovin</owners>
+    <projectUrl>http://github.com/JohnStov/MetroNetAudio</projectUrl>
+    <id>MetroNetAudio</id>
+    <title />
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A C++/CX wrapper around the WIndows 8 XAudio2 classes to allow them to be consumed from C#ge description.</description>
+  </metadata>
+  <files>
+    <file src="Debug\MetroNetAudio\MetroNetAudio.dll" target="content\MetroNetAudio.dll" />
+    <file src="Debug\MetroNetAudio\MetroNetAudio.exp" target="content\MetroNetAudio.exp" />
+    <file src="Debug\MetroNetAudio\MetroNetAudio.ilk" target="content\MetroNetAudio.ilk" />
+    <file src="Debug\MetroNetAudio\MetroNetAudio.lib" target="content\MetroNetAudio.lib" />
+    <file src="Debug\MetroNetAudio\MetroNetAudio.pdb" target="content\MetroNetAudio.pdb" />
+    <file src="Debug\MetroNetAudio\MetroNetAudio.pri" target="content\MetroNetAudio.pri" />
+    <file src="Debug\MetroNetAudio\MetroNetAudio.winmd" target="content\MetroNetAudio.winmd" />
+  </files>
+</package>
