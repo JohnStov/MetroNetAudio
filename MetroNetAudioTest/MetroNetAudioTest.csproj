@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="XAudio2MasteringVoiceTest.cs" />
+    <Compile Include="XAudio2SourceVoiceTest.cs" />
     <Compile Include="XAudio2Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XAudio2VoiceDetailsTest.cs" />

@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+
 #include "XAudio2Object.h"
 #include "XAudio2EngineCallback.h"
 #include "XAudio2MasteringVoice.h"
@@ -100,8 +101,10 @@ XAudio2SourceVoice^ XAudio2::CreateSourceVoice()
 
 	auto fmt = ref new WaveFormat();
 
-	DX::ThrowIfFailed(m_pXAudio2->CreateSourceVoice(&pVoice, &(fmt->m_format), (UINT)SourceVoiceFlags::None));
+	auto pCallbacks = new XAudio2VoiceCallbackShim();
+
+	DX::ThrowIfFailed(m_pXAudio2->CreateSourceVoice(&pVoice, &(fmt->m_format), (UINT)SourceVoiceFlags::None, XAUDIO2_DEFAULT_FREQ_RATIO, pCallbacks));
 	
-	return ref new XAudio2SourceVoice(pVoice);
+	return ref new XAudio2SourceVoice(pVoice, pCallbacks);
 }
 

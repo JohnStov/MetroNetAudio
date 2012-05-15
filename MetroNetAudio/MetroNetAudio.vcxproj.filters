@@ -17,6 +17,9 @@
     <ClInclude Include="XAudio2SourceVoice.h" />
     <ClInclude Include="SourceVoiceFlags.h" />
     <ClInclude Include="WaveFormat.h" />
+    <ClInclude Include="XAudio2VoiceCallback.h" />
+    <ClInclude Include="XAudio2VoiceState.h" />
+    <ClInclude Include="VoiceStateFlags.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -26,5 +29,7 @@
     <ClCompile Include="XAudio2VoiceDetails.cpp" />
     <ClCompile Include="XAudio2SourceVoice.cpp" />
     <ClCompile Include="WaveFormat.cpp" />
+    <ClCompile Include="XAudio2VoiceCallback.cpp" />
+    <ClCompile Include="XAudio2VoiceState.cpp" />
   </ItemGroup>
 </Project>
