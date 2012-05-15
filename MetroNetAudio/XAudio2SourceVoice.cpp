@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "XAudio2SourceVoice.h"
 #include "XAudio2VoiceState.h"
+#include "XAudio2Buffer.h"
+#include "DXHelper.h"
 
 using namespace MetroNetAudio;
 
@@ -21,6 +23,11 @@ XAudio2VoiceState^ XAudio2SourceVoice::GetState(VoiceStateFlags flags)
 	m_pVoice->GetState(&(result->m_state), (UINT)flags);
 
 	return result;
+}
+
+void XAudio2SourceVoice::SubmitSourceBuffer(XAudio2Buffer^ buffer)
+{
+	DX::ThrowIfFailed(m_pVoice->SubmitSourceBuffer(&(buffer->m_buffer)));
 }
 
 void XAudio2SourceVoice::FireVoiceProcessingPassStart(UINT32 BytesRequired)

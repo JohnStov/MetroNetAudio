@@ -18,6 +18,7 @@ namespace MetroNetAudio
 	public delegate void VoiceErrorHandler(IntPtr pContext, HRESULT error);
 	
 	ref class XAudio2VoiceState;
+	ref class XAudio2Buffer;
 
 	public ref class XAudio2SourceVoice sealed
 	{
@@ -35,6 +36,7 @@ namespace MetroNetAudio
 		event VoiceErrorHandler^ VoiceError;
 
 		XAudio2VoiceState^ GetState(VoiceStateFlags flags);
+		void SubmitSourceBuffer(XAudio2Buffer^ buffer);
 
 	private:
 		std::unique_ptr<IXAudio2SourceVoice> m_pVoice;

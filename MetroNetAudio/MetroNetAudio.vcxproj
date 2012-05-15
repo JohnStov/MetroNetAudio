@@ -199,6 +199,7 @@
     <ClInclude Include="SourceVoiceFlags.h" />
     <ClInclude Include="VoiceStateFlags.h" />
     <ClInclude Include="WaveFormat.h" />
+    <ClInclude Include="XAudio2Buffer.h" />
     <ClInclude Include="XAudio2EngineCallback.h" />
     <ClInclude Include="XAudio2MasteringVoice.h" />
     <ClInclude Include="XAudio2Object.h" />
@@ -218,6 +219,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="WaveFormat.cpp" />
+    <ClCompile Include="XAudio2Buffer.cpp" />
     <ClCompile Include="XAudio2EngineCallback.cpp" />
     <ClCompile Include="XAudio2MasteringVoice.cpp" />
     <ClCompile Include="XAudio2Object.cpp" />
