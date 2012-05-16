@@ -12,10 +12,10 @@ namespace MetroNetAudio
 	public delegate void VoiceProcessingPassStartHandler(uint32 bytesRequired);
 	public delegate void VoiceProcessingPassEndHandler();
 	public delegate void StreamEndHandler();
-	public delegate void BufferStartHandler(IntPtr pContext);
-	public delegate void BufferEndHandler(IntPtr pContext);
-	public delegate void LoopEndHandler(IntPtr pContext);
-	public delegate void VoiceErrorHandler(IntPtr pContext, HRESULT error);
+	public delegate void BufferStartHandler(Object^ context);
+	public delegate void BufferEndHandler(Object^ context);
+	public delegate void LoopEndHandler(Object^ context);
+	public delegate void VoiceErrorHandler(Object^ context, HRESULT error);
 	
 	ref class XAudio2VoiceState;
 	ref class XAudio2Buffer;
@@ -37,6 +37,8 @@ namespace MetroNetAudio
 
 		XAudio2VoiceState^ GetState(VoiceStateFlags flags);
 		void SubmitSourceBuffer(XAudio2Buffer^ buffer);
+		void Start();
+		void Stop();
 
 	private:
 		std::unique_ptr<IXAudio2SourceVoice> m_pVoice;

@@ -30,6 +30,16 @@ void XAudio2SourceVoice::SubmitSourceBuffer(XAudio2Buffer^ buffer)
 	DX::ThrowIfFailed(m_pVoice->SubmitSourceBuffer(&(buffer->m_buffer)));
 }
 
+void XAudio2SourceVoice::Start()
+{
+	DX::ThrowIfFailed(m_pVoice->Start());
+}
+
+void XAudio2SourceVoice::Stop()
+{
+	DX::ThrowIfFailed(m_pVoice->Stop());
+}
+
 void XAudio2SourceVoice::FireVoiceProcessingPassStart(UINT32 BytesRequired)
 {
 	VoiceProcessingPassStart(BytesRequired);
@@ -47,22 +57,22 @@ void XAudio2SourceVoice::FireStreamEnd()
 
 void XAudio2SourceVoice::FireBufferStart(void* pBufferContext)
 {
-	BufferStart((IntPtr) pBufferContext);
+	BufferStart(reinterpret_cast<Object^>(pBufferContext));
 }
 
 void XAudio2SourceVoice::FireBufferEnd(void* pBufferContext)
 {
-	BufferEnd((IntPtr) pBufferContext);
+	BufferEnd(reinterpret_cast<Object^>(pBufferContext));
 }
 
 void XAudio2SourceVoice::FireLoopEnd(void* pBufferContext)
 {
-	LoopEnd((IntPtr) pBufferContext);
+	LoopEnd(reinterpret_cast<Object^>(pBufferContext));
 }
 
 void XAudio2SourceVoice::FireVoiceError(void* pBufferContext, HRESULT Error)
 {
-	VoiceError((IntPtr) pBufferContext, Error);
+	VoiceError(reinterpret_cast<Object^>(pBufferContext), Error);
 }
 
 

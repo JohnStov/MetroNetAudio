@@ -13,6 +13,7 @@ XAudio2Buffer::XAudio2Buffer()
 	m_buffer.LoopBegin = XAUDIO2_NO_LOOP_REGION;
 	m_buffer.LoopCount = 0;
 	m_buffer.LoopLength = 0;
+	m_buffer.pContext = NULL;
 }
 
 
