@@ -1,7 +1,7 @@
 ﻿namespace MetroNetAudioTest
 {
     using System.Diagnostics;
-    using System.Threading.Tasks;
+    using System.Threading;
     using MetroNetAudio;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -57,29 +57,26 @@
         }
 
         [TestMethod]
-        public void StartingVoiceFiresEvents()
+        public void StartingVoiceFiresVoiceProcessingPassStart()
         {
             XAudio2 obj = XAudio2.Create();
             var master = obj.CreateMasteringVoice();
             var voice = obj.CreateSourceVoice();
 
-            int callCount = 0;
+            uint bytesRequested = 0;
+            var evt = new ManualResetEvent(false);
 
-            voice.VoiceProcessingPassStart += (bytes) => ++callCount;
+            voice.VoiceProcessingPassStart += (bytes) =>
+            {
+                bytesRequested = bytes;
+                evt.Set();
+            };
+            
             voice.Start();
-
-            // Yuck! Seems to need around 4 seconds for audio subsystem to get its act sorted
-            Sleep(4000);
-
+            evt.WaitOne(10000); // allow 10 secs for the event to occur    
             voice.Stop();
 
-            Assert.AreNotEqual(0, callCount);
+            Assert.AreNotEqual(0, bytesRequested);
         }
-
-        private static void Sleep(int ms)
-        {
-            new System.Threading.ManualResetEvent(false).WaitOne(ms);
-        }
-
     }
 }
