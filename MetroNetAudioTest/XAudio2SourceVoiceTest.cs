@@ -55,5 +55,31 @@
 
             voice.Stop();
         }
+
+        [TestMethod]
+        public void StartingVoiceFiresEvents()
+        {
+            XAudio2 obj = XAudio2.Create();
+            var master = obj.CreateMasteringVoice();
+            var voice = obj.CreateSourceVoice();
+
+            int callCount = 0;
+
+            voice.VoiceProcessingPassStart += (bytes) => ++callCount;
+            voice.Start();
+
+            // Yuck! Seems to need around 4 seconds for audio subsystem to get its act sorted
+            Sleep(4000);
+
+            voice.Stop();
+
+            Assert.AreNotEqual(0, callCount);
+        }
+
+        private static void Sleep(int ms)
+        {
+            new System.Threading.ManualResetEvent(false).WaitOne(ms);
+        }
+
     }
 }
