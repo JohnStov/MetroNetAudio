@@ -10,6 +10,7 @@ namespace MetroNetAudio
 	{
 	public:
 		XAudio2Buffer();
+		XAudio2Buffer(uint32 bytes);
 		~XAudio2Buffer();
 
 	private:

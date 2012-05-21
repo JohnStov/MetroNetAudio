@@ -78,5 +78,40 @@
 
             Assert.AreNotEqual(0, bytesRequested);
         }
+
+        [TestMethod]
+        public void OneBufferIsPlayed()
+        {
+            XAudio2 obj = XAudio2.Create();
+            var master = obj.CreateMasteringVoice();
+            var voice = obj.CreateSourceVoice();
+
+            int buffersStarted = 0;
+            int buffersEnded = 0;
+            var processingStartEvt = new ManualResetEvent(false);
+
+            voice.VoiceProcessingPassStart += (bytes) =>
+                {
+                    voice.SubmitSourceBuffer(new XAudio2Buffer(bytes));
+                };
+
+            voice.BufferStart += (startObj) =>
+                {
+                    ++buffersStarted;
+                };
+
+            voice.BufferEnd += (endObj) =>
+            {
+                ++buffersEnded;
+                processingStartEvt.Set();
+            };
+
+            voice.Start();
+            processingStartEvt.WaitOne(30000); // allow 30 secs for the event to occur    
+            voice.Stop();
+
+            Assert.AreEqual(1, buffersStarted);
+            Assert.AreEqual(1, buffersEnded);
+        }
     }
 }
