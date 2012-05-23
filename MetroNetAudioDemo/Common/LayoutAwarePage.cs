@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-
-namespace MetroNetAudioDemo.Common
+﻿namespace MetroNetAudioDemo.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Windows.Foundation.Collections;
+    using Windows.UI.ViewManagement;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+
     /// <summary>
     /// Typical implementation of Page that provides several important conveniences:
     /// application view state to visual state mapping, GoBack and GoHome event handlers, and

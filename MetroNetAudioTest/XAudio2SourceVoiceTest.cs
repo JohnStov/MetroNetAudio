@@ -1,6 +1,5 @@
 ﻿namespace MetroNetAudioTest
 {
-    using System.Diagnostics;
     using System.Threading;
     using MetroNetAudio;
     using Microsoft.VisualStudio.TestTools.UnitTesting;

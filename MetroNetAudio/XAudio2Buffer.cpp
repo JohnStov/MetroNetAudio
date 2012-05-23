@@ -16,11 +16,11 @@ XAudio2Buffer::XAudio2Buffer()
 	m_buffer.pContext = NULL;
 }
 
-XAudio2Buffer::XAudio2Buffer(uint32 bytes)
+XAudio2Buffer::XAudio2Buffer(uint32 samples)
 {
 	m_buffer.Flags = 0;
-	m_buffer.AudioBytes = bytes;
-	m_buffer.pAudioData = new BYTE[bytes];
+	m_buffer.AudioBytes = samples * sizeof(float);
+	m_buffer.pAudioData = new BYTE[m_buffer.AudioBytes];
 	m_buffer.PlayBegin = 0;
 	m_buffer.PlayLength = 0;
 	m_buffer.LoopBegin = XAUDIO2_NO_LOOP_REGION;
@@ -29,6 +29,19 @@ XAudio2Buffer::XAudio2Buffer(uint32 bytes)
 	m_buffer.pContext = NULL;
 }
 
+float XAudio2Buffer::default::get(uint32 index)
+{
+	float* buffer = (float*)(m_buffer.pAudioData);
+
+	return buffer[index];
+}
+
+void XAudio2Buffer::default::set(uint32 index, float value)
+{
+	float* buffer = (float*)(m_buffer.pAudioData);
+
+	buffer[index] = value;
+}
 
 XAudio2Buffer::~XAudio2Buffer()
 {

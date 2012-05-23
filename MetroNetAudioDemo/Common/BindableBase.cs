@@ -1,10 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Windows.UI.Xaml.Data;
-
-namespace MetroNetAudioDemo.Common
+﻿namespace MetroNetAudioDemo.Common
 {
+    using System;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
     /// <summary>
     /// Implementation of <see cref="INotifyPropertyChanged"/> to simplify models.
     /// </summary>

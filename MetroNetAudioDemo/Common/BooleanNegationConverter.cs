@@ -1,8 +1,8 @@
-﻿using System;
-using Windows.UI.Xaml.Data;
-
-namespace MetroNetAudioDemo.Common
+﻿namespace MetroNetAudioDemo.Common
 {
+    using System;
+    using Windows.UI.Xaml.Data;
+
     /// <summary>
     /// Value converter that translates true to false and vice versa.
     /// </summary>

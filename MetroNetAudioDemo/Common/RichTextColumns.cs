@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Documents;
-
-namespace MetroNetAudioDemo.Common
+﻿namespace MetroNetAudioDemo.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using Windows.Foundation;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+
     /// <summary>
     /// Wrapper for <see cref="RichTextBlock"/> that creates as many additional overflow
     /// columns as needed to fit the available content.
