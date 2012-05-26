@@ -5,6 +5,7 @@
 
 #include "XAudio2Processor.h"
 #include "SourceVoiceFlags.h"
+#include "AudioStreamCategory.h"
 
 using namespace Platform;
 using namespace Microsoft::WRL;
@@ -41,8 +42,11 @@ namespace MetroNetAudio
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels);
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate);
 		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId);
+		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, AudioStreamCategory category);
+		XAudio2MasteringVoice^ CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId, AudioStreamCategory category);
 
 		XAudio2SourceVoice^ CreateSourceVoice();
+		XAudio2SourceVoice^ CreateSourceVoice(WaveFormat^ format);
 
 	private:
 		ComPtr<IXAudio2> m_pXAudio2;

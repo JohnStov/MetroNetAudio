@@ -194,6 +194,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AudioStreamCategory.h" />
     <ClInclude Include="DXHelper.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SourceVoiceFlags.h" />

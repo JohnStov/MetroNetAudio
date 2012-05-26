@@ -89,8 +89,25 @@ XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint3
 XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId)
 {
 	IXAudio2MasteringVoice* pVoice;
-
 	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice, (UINT)inputChannels, (UINT)inputSampleRate, 0, deviceId->Begin()));
+	
+	return ref new XAudio2MasteringVoice(pVoice);
+}
+
+XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, String^ deviceId, AudioStreamCategory category)
+{
+	IXAudio2MasteringVoice* pVoice;
+
+	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice, (UINT)inputChannels, (UINT)inputSampleRate, 0, deviceId->Begin(), NULL, (AUDIO_STREAM_CATEGORY)category));
+	
+	return ref new XAudio2MasteringVoice(pVoice);
+}
+
+XAudio2MasteringVoice^ XAudio2::CreateMasteringVoice(uint32 inputChannels, uint32 inputSampleRate, AudioStreamCategory category)
+{
+	IXAudio2MasteringVoice* pVoice;
+
+	DX::ThrowIfFailed(m_pXAudio2->CreateMasteringVoice(&pVoice, (UINT)inputChannels, (UINT)inputSampleRate, 0, NULL, NULL, (AUDIO_STREAM_CATEGORY)category));
 	
 	return ref new XAudio2MasteringVoice(pVoice);
 }
@@ -107,4 +124,16 @@ XAudio2SourceVoice^ XAudio2::CreateSourceVoice()
 	
 	return ref new XAudio2SourceVoice(pVoice, pCallbacks);
 }
+
+XAudio2SourceVoice^ XAudio2::CreateSourceVoice(WaveFormat^ format)
+{
+	IXAudio2SourceVoice* pVoice;
+
+	auto pCallbacks = new XAudio2VoiceCallbackShim();
+
+	DX::ThrowIfFailed(m_pXAudio2->CreateSourceVoice(&pVoice, &(format->m_format), (UINT)SourceVoiceFlags::None, XAUDIO2_DEFAULT_FREQ_RATIO, pCallbacks));
+	
+	return ref new XAudio2SourceVoice(pVoice, pCallbacks);
+}
+
 

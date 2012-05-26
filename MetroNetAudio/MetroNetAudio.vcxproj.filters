@@ -21,6 +21,7 @@
     <ClInclude Include="XAudio2VoiceState.h" />
     <ClInclude Include="VoiceStateFlags.h" />
     <ClInclude Include="XAudio2Buffer.h" />
+    <ClInclude Include="AudioStreamCategory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

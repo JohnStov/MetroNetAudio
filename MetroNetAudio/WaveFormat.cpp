@@ -8,7 +8,7 @@ WaveFormat::WaveFormat(void)
 	m_format.wFormatTag = WAVE_FORMAT_IEEE_FLOAT;
 	m_format.nChannels = 2;
 	m_format.nSamplesPerSec = 48000;
-	m_format.wBitsPerSample = 32;
+	m_format.wBitsPerSample = sizeof(float) * 8;
 	m_format.cbSize = 0;
 
 	RecalculateProperties();
