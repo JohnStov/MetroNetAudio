@@ -57,6 +57,8 @@ namespace MetroNetAudioDemo
             voice.BufferStart += voice_BufferStart;
             voice.BufferEnd += voice_BufferEnd;
             voice.VoiceError += voice_VoiceError;
+
+            Volume.Value = voice.Volume * 100;
         }
 
         /// <summary>
@@ -121,6 +123,12 @@ namespace MetroNetAudioDemo
         private void Slider_ValueChanged_1(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
         {
             frequency = (float)e.NewValue;
+        }
+
+        private void Slider_ValueChanged_2(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
+        {
+            if (voice != null)
+                voice.Volume = (float)(e.NewValue)/100.0f;
         }
     }
 }

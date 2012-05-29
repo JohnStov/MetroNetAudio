@@ -37,7 +37,8 @@
         </Grid>
         <StackPanel Grid.Row="1" >
             <ToggleSwitch x:Name="SoundSwitch" Header="Sound" HorizontalAlignment="Left" VerticalAlignment="Top" Toggled="SoundSwitch_Toggled_1"/>
-            <Slider HorizontalAlignment="Left" Width="200" Minimum="1" Maximum="10000" Value="440" ValueChanged="Slider_ValueChanged_1"/>
+            <Slider x:Name="Volume" HorizontalAlignment="Left" Width="200" Minimum="0" Maximum="100" Value="50" ValueChanged="Slider_ValueChanged_2"/>
+            <Slider x:Name="Pitch" HorizontalAlignment="Left" Width="200" Minimum="1" Maximum="10000" Value="440" ValueChanged="Slider_ValueChanged_1"/>
         </StackPanel>
 
         <VisualStateManager.VisualStateGroups>

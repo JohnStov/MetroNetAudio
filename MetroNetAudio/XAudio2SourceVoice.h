@@ -40,6 +40,12 @@ namespace MetroNetAudio
 		void Start();
 		void Stop();
 
+		property float Volume
+		{
+			float get();
+			void set(float value);
+		}
+
 	private:
 		std::unique_ptr<IXAudio2SourceVoice> m_pVoice;
 		std::unique_ptr<XAudio2VoiceCallbackShim> m_pCallbacks;

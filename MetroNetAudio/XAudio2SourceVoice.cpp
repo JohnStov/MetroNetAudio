@@ -75,4 +75,14 @@ void XAudio2SourceVoice::FireVoiceError(void* pBufferContext, HRESULT Error)
 	VoiceError(reinterpret_cast<Object^>(pBufferContext), Error);
 }
 
+float XAudio2SourceVoice::Volume::get()
+{
+	float value;
+	m_pVoice->GetVolume(&value);
+	return value;
+}
 
+void XAudio2SourceVoice::Volume::set(float value)
+{
+	DX::ThrowIfFailed(m_pVoice->SetVolume(value));
+}
