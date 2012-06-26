@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
 
-  <Identity Name="f46881df-2e06-471b-be71-f5ab814b70f9"
-            Publisher="CN=joh.000"
+  <Identity Name="9539ec84-a22b-496c-ab8b-a87562fdab2d"
+            Publisher="CN=John"
             Version="1.0.0.0" />
 
   <Properties>
     <DisplayName>MetroNetAudioDemo</DisplayName>
-    <PublisherDisplayName>joh.000</PublisherDisplayName>
+    <PublisherDisplayName>John</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
-    <Description>MetroNetAudioDemo</Description>
   </Properties>
 
   <Prerequisites>
-    <OSMinVersion>6.2</OSMinVersion>
-    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+    <OSMinVersion>6.2.0</OSMinVersion>
+    <OSMaxVersionTested>6.2.0</OSMaxVersionTested>
   </Prerequisites>
 
   <Resources>
@@ -31,7 +30,7 @@
             SmallLogo="Assets\SmallLogo.png"
             Description="MetroNetAudioDemo"
             ForegroundText="light"
-            BackgroundColor="#222222">
+            BackgroundColor="#464646">
             <DefaultTile ShowName="allLogos" />
             <SplashScreen Image="Assets\SplashScreen.png" />
         </VisualElements>

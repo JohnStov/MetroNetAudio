@@ -1,7 +1,7 @@
 ﻿namespace MetroNetAudioTest
 {
     using MetroNetAudio;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
     using Windows.Media.Devices;
 
     [TestClass]
@@ -55,11 +55,10 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.Exception))]
         public void CannotCreateMasteringVoiceWithBadChannelCount()
         {
             XAudio2 obj = XAudio2.Create();
-            var voice = obj.CreateMasteringVoice(0xffffffff);
+            Assert.ThrowsException<System.Exception>(() => obj.CreateMasteringVoice(0xffffffff));
         }
 
         [TestMethod]
@@ -71,11 +70,10 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.Exception))]
         public void CannotCreateMasteringVoiceWithBadSampleRate()
         {
             XAudio2 obj = XAudio2.Create();
-            var voice = obj.CreateMasteringVoice(2, 99);
+            Assert.ThrowsException<System.Exception>(() => obj.CreateMasteringVoice(2, 99));
         }
 
         [TestMethod]
@@ -89,13 +87,12 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.Runtime.InteropServices.COMException))]
         public void CannotCreateMasteringVoiceWithBadDeviceId()
         {
             XAudio2 obj = XAudio2.Create();
 
             var id = "Not A Valid Device Id";
-            var voice = obj.CreateMasteringVoice(2, 48000, id);
+            Assert.ThrowsException<System.Exception>(() => obj.CreateMasteringVoice(2, 48000, id));
         }
 
         [TestMethod]
@@ -108,12 +105,10 @@
         }
 
         [TestMethod]
-        [ExpectedException(typeof(System.Exception))]
         public void CannotCreateSourceVoiceWithoutMasteringVoice()
         {
             XAudio2 obj = XAudio2.Create();
-            var voice = obj.CreateSourceVoice();
-            Assert.IsNotNull(voice);
+            Assert.ThrowsException<System.Exception>(() => obj.CreateSourceVoice());
         }
     }
 }

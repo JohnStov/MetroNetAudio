@@ -1,7 +1,8 @@
-﻿namespace MetroNetAudioTest
+﻿
+namespace MetroNetAudioTest
 {
     using MetroNetAudio;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
     [TestClass]
     public class XAudio2VoiceDetailsTest

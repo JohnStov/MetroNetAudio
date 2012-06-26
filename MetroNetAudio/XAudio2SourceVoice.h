@@ -15,7 +15,7 @@ namespace MetroNetAudio
 	public delegate void BufferStartHandler(Object^ context);
 	public delegate void BufferEndHandler(Object^ context);
 	public delegate void LoopEndHandler(Object^ context);
-	public delegate void VoiceErrorHandler(Object^ context, HRESULT error);
+	public delegate void VoiceErrorHandler(Object^ context, unsigned int error);
 	
 	ref class XAudio2VoiceState;
 	ref class XAudio2Buffer;

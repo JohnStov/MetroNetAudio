@@ -14,7 +14,7 @@ namespace MetroNetAudio
 {
 	public delegate void ProcessingPassStartHandler();
 	public delegate void ProcessingPassEndHandler();
-	public delegate void CriticalEventHandler(HRESULT hresult);
+	public delegate void CriticalEventHandler(unsigned int hresult);
 
 	ref class XAudio2MasteringVoice;
 	ref class XAudio2SourceVoice;

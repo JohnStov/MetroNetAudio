@@ -1,23 +1,32 @@
-﻿// The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+using MetroNetAudio;
+
+
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace MetroNetAudioDemo
 {
-    using System;
-    using Windows.UI.Xaml;
-    using Windows.UI.Xaml.Controls;
-    using Windows.UI.Xaml.Navigation;
-    using Windows.Media;
-    using MetroNetAudio;
-
     /// <summary>
-    /// A basic page that provides characteristics common to most applications.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : MetroNetAudioDemo.Common.LayoutAwarePage
+    public sealed partial class MainPage : Page
     {
         private XAudio2 audio;
         private XAudio2MasteringVoice masteringVoice;
         private XAudio2SourceVoice voice;
-
 
         private float phase = 0.0f;
         private const float TwoPi = (float)Math.PI * 2.0f;
@@ -27,38 +36,6 @@ namespace MetroNetAudioDemo
         public MainPage()
         {
             this.InitializeComponent();
-
-            MediaControl.PlayPressed += MediaControl_PlayPressed;
-            MediaControl.PausePressed += MediaControl_PausePressed;
-        }
-
-        void MediaControl_PlayPressed(object sender, object e)
-        {
-            if (voice != null)
-                voice.Start();
-        }
-
-        void MediaControl_PausePressed(object sender, object e)
-        {
-            if (voice != null)
-                voice.Stop();
-        }
-
-        private void InitializeAudio()
-        {
-            audio = XAudio2.Create();
-            masteringVoice = audio.CreateMasteringVoice();
-
-            WaveFormat fmt = new WaveFormat {ChannelCount = 1};
-            voice = audio.CreateSourceVoice(fmt);
-
-            voice.VoiceProcessingPassStart += voice_VoiceProcessingPassStart;
-            voice.VoiceProcessingPassEnd += voice_VoiceProcessingPassEnd;
-            voice.BufferStart += voice_BufferStart;
-            voice.BufferEnd += voice_BufferEnd;
-            voice.VoiceError += voice_VoiceError;
-
-            Volume.Value = voice.Volume * 100;
         }
 
         /// <summary>
@@ -68,8 +45,23 @@ namespace MetroNetAudioDemo
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // Wait for this so we don't block for too long during startup
             InitializeAudio();
+        }
+
+        private void InitializeAudio()
+        {
+            audio = XAudio2.Create();
+            masteringVoice = audio.CreateMasteringVoice();
+
+            WaveFormat fmt = new WaveFormat { ChannelCount = 1 };
+            voice = audio.CreateSourceVoice(fmt);
+
+            voice.VoiceProcessingPassStart += voice_VoiceProcessingPassStart;
+            voice.VoiceProcessingPassEnd += voice_VoiceProcessingPassEnd;
+            voice.BufferStart += voice_BufferStart;
+            voice.BufferEnd += voice_BufferEnd;
+
+            Volume.Value = voice.Volume * 100;
         }
 
         private void voice_VoiceProcessingPassStart(uint bufferSize)
@@ -78,7 +70,7 @@ namespace MetroNetAudioDemo
             var buffer = new XAudio2Buffer(bufferSamples);
             for (uint i = 0; i < bufferSamples; ++i)
             {
-                buffer[i] = (float) Math.Sin(phase);
+                buffer[i] = (float)Math.Sin(phase);
                 phase = (phase + (Delta * frequency)) % TwoPi;
             }
 
@@ -98,10 +90,6 @@ namespace MetroNetAudioDemo
         {
         }
 
-        private void voice_VoiceError(object context, int error)
-        {
-        }
-
         private void SoundSwitch_Toggled_1(object sender, RoutedEventArgs e)
         {
             if (voice != null)
@@ -110,12 +98,10 @@ namespace MetroNetAudioDemo
                 if (sw.IsOn)
                 {
                     voice.Start();
-                    MediaControl.IsPlaying = true;
                 }
                 else
                 {
                     voice.Stop();
-                    MediaControl.IsPlaying = true;
                 }
             }
         }
@@ -128,7 +114,7 @@ namespace MetroNetAudioDemo
         private void Slider_ValueChanged_2(object sender, Windows.UI.Xaml.Controls.Primitives.RangeBaseValueChangedEventArgs e)
         {
             if (voice != null)
-                voice.Volume = (float)(e.NewValue)/100.0f;
+                voice.Volume = (float)(e.NewValue) / 100.0f;
         }
     }
 }
