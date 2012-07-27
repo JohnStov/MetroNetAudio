@@ -79,6 +79,7 @@
         }
 
         [TestMethod]
+        [Ignore]
         public void OneBufferIsPlayed()
         {
             XAudio2 obj = XAudio2.Create();
@@ -89,10 +90,7 @@
             int buffersEnded = 0;
             var processingStartEvt = new ManualResetEvent(false);
 
-            voice.VoiceProcessingPassStart += (bytes) =>
-                {
-                    voice.SubmitSourceBuffer(new XAudio2Buffer(bytes));
-                };
+            voice.VoiceProcessingPassStart += (bytes) => voice.SubmitSourceBuffer(new XAudio2Buffer(bytes));
 
             voice.BufferStart += (startObj) =>
                 {

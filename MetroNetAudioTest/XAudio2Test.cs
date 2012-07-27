@@ -1,4 +1,6 @@
-﻿namespace MetroNetAudioTest
+﻿using System.Runtime.InteropServices;
+
+namespace MetroNetAudioTest
 {
     using MetroNetAudio;
     using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
@@ -92,7 +94,7 @@
             XAudio2 obj = XAudio2.Create();
 
             var id = "Not A Valid Device Id";
-            Assert.ThrowsException<System.Exception>(() => obj.CreateMasteringVoice(2, 48000, id));
+            Assert.ThrowsException<COMException>(() => obj.CreateMasteringVoice(2, 48000, id));
         }
 
         [TestMethod]
