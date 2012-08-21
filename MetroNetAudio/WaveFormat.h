@@ -8,7 +8,7 @@ namespace MetroNetAudio
 	{
 	public:
 		WaveFormat(void);
-		~WaveFormat(void);
+		virtual ~WaveFormat(void);
 
 		property uint16 FormatTag { uint16 get(); }
 		property uint16 ChannelCount { uint16 get(); void set(uint16 value); }

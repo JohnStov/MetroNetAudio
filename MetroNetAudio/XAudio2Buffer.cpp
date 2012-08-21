@@ -29,14 +29,14 @@ XAudio2Buffer::XAudio2Buffer(uint32 samples)
 	m_buffer.pContext = NULL;
 }
 
-float XAudio2Buffer::default::get(uint32 index)
+float XAudio2Buffer::GetSample(uint32 index)
 {
 	float* buffer = (float*)(m_buffer.pAudioData);
 
 	return buffer[index];
 }
 
-void XAudio2Buffer::default::set(uint32 index, float value)
+void XAudio2Buffer::SetSample(uint32 index, float value)
 {
 	float* buffer = (float*)(m_buffer.pAudioData);
 

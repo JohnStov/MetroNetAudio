@@ -10,7 +10,7 @@ namespace MetroNetAudio
 		XAudio2VoiceDetails();
 
 	public:
-		~XAudio2VoiceDetails();
+		virtual ~XAudio2VoiceDetails();
 
 		property uint32 CreationFlags { uint32 get(); }
 

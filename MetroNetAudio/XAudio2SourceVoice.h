@@ -25,7 +25,7 @@ namespace MetroNetAudio
 	private:
 		XAudio2SourceVoice(IXAudio2SourceVoice* pVoice, XAudio2VoiceCallbackShim* pCallbacks);
 	public:
-		~XAudio2SourceVoice(void);
+		virtual ~XAudio2SourceVoice(void);
 
 		event VoiceProcessingPassStartHandler^ VoiceProcessingPassStart;
 		event VoiceProcessingPassEndHandler^ VoiceProcessingPassEnd;

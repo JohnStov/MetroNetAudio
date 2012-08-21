@@ -17,7 +17,7 @@ namespace MetroNetAudio
 		XAudio2MasteringVoice(IXAudio2MasteringVoice* pVoice);
 
 	public:
-		~XAudio2MasteringVoice();
+		virtual ~XAudio2MasteringVoice();
 
 		XAudio2VoiceDetails^ GetVoiceDetails();
 

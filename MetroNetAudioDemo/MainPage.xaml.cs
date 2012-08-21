@@ -70,7 +70,7 @@ namespace MetroNetAudioDemo
             var buffer = new XAudio2Buffer(bufferSamples);
             for (uint i = 0; i < bufferSamples; ++i)
             {
-                buffer[i] = (float)Math.Sin(phase);
+                buffer.SetSample(i, (float)Math.Sin(phase));
                 phase = (phase + (Delta * frequency)) % TwoPi;
             }
 

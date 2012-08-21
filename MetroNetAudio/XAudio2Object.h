@@ -26,7 +26,7 @@ namespace MetroNetAudio
 		XAudio2(IXAudio2* pXAudio2);
 		
 	public:
-		~XAudio2();
+		virtual ~XAudio2();
 
 		event ProcessingPassStartHandler^ ProcessingPassStart;
 		event ProcessingPassEndHandler^ ProcessingPassEnd;

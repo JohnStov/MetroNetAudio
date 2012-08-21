@@ -12,7 +12,7 @@ namespace MetroNetAudio
 	{
 	public:
 		XAudio2VoiceState();
-		~XAudio2VoiceState();
+		virtual ~XAudio2VoiceState();
 
 		property IntPtr CurrentBufferContext { IntPtr get(); }
 		property uint32 BuffersQueued { uint32 get(); }

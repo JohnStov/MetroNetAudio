@@ -11,9 +11,10 @@ namespace MetroNetAudio
 	public:
 		XAudio2Buffer();
 		XAudio2Buffer(uint32 samples);
-		~XAudio2Buffer();
+		virtual ~XAudio2Buffer();
 
-		property float default[uint32] { float get(uint32 index); void set(uint32 index, float value); }
+		float GetSample(uint32 index);
+		void SetSample(uint32 index, float value);
 
 	private:
 		XAUDIO2_BUFFER m_buffer;
